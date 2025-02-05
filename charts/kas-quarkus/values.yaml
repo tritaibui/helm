@@ -1,10 +1,9 @@
 replicaCount: 1
 
 image:
-  repository: 637423378084.dkr.ecr.ap-southeast-1.amazonaws.com/linkifysoft/kas
+  repository: trinitytechnology/linkifysoft-kas
   pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "1.19.4"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -78,8 +77,8 @@ secret:
   name: "kas"
   git:
     repository: "https://np-gitea.linkifysoft.com/local/connect.git"
-    username: "local"
-    password: "Linkify@2024"
+    username: "<your-git-username>"
+    password: "<your-git-password>"
     branch: "main"
   containerImage:
     registry: "np-gitea.linkifysoft.com"
