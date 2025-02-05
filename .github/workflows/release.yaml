@@ -27,7 +27,7 @@ jobs:
       - name: Package Helm Chart
         run: |
           helm package ./kas-quarkus 
-          ls -lh ./kas-quarkus-*.tgz 
+          ls -lh ./kas-*.tgz
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.5.0
