@@ -14,6 +14,11 @@ serviceAccount:
   annotations: {}
   name: "kas"
 
+# RBAC Configuration
+rbac:
+  createRole: true  # Enable role creation
+  createRoleBinding: true  # Enable role binding creation
+  
 podAnnotations: {}
 
 podSecurityContext: {}
@@ -26,28 +31,6 @@ securityContext: {}
   # readOnlyRootFilesystem: true
   # runAsNonRoot: true
   # runAsUser: 1000
-
-service:
-  type: ClusterIP
-  port:
-    http: 8080
-
-ingress:
-  enabled: false
-  className: "nginx"
-  annotations: 
-    kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/backend-protocol: HTTP
-    # kubernetes.io/tls-acme: "true"
-  hosts:
-    - host: kas.linkifysoft.com
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
-  tls: 
-   - secretName: linkifysoft-tls
-     hosts:
-       - linkifysoft.com
 
 resources:
   # limits:
@@ -75,18 +58,18 @@ config:
 secret:
   create: true
   name: "kas"
-  git:
-    repository: "https://np-gitea.linkifysoft.com/local/connect.git"
-    username: "<your-git-username>"
-    password: "<your-git-password>"
-    branch: "main"
-  containerImage:
-    registry: "np-gitea.linkifysoft.com"
-    group: "local"
-    registryUsername: "<your-registry-username>"
-    registryPassword: "<your-registry-password>"
+  # git:
+  #   repository: "https://np-gitea.linkifysoft.com/local/connect.git"
+  #   username: "local"
+  #   password: "Linkify@2024"
+  #   branch: "main"
+  # containerImage:
+  #   registry: "np-gitea.linkifysoft.com"
+  #   group: "local"
+  # #   registryUsername: "local"
+  #   registryPassword: "Linkify@2024"
   agent:
-    token: "<your-agent-token>"
+    token: "e07c6e8099004fbeb966723f821a7461"
   websocket:
     url: "ws://host.docker.internal:8000/connection/websocket"
 
@@ -116,11 +99,3 @@ probe:
     successThreshold: 1
     failureThreshold: 3
 
-# RBAC Configuration
-rbac:
-  createRole: true  # Enable role creation
-  createRoleBinding: true  # Enable role binding creation
-  role:
-    name: "kas"
-  roleBinding:
-    name:  "kas-role-binding"

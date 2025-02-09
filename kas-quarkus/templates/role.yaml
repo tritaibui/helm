@@ -2,7 +2,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: {{ .Values.rbac.role.name }}
+  name: {{ .Values.serviceAccount.name }}
   namespace: {{ .Values.config.kubernetes.namespace }}
 rules:
 - apiGroups: [""]
@@ -55,7 +55,7 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  name: {{ .Values.rbac.role.name }}
+  name: {{ .Values.serviceAccount.name }}
   namespace: {{ .Values.config.kubernetes.namespace }}
 rules:
 - apiGroups: [""]
