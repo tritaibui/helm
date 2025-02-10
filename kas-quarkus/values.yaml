@@ -1,9 +1,10 @@
 replicaCount: 1
 
 image:
-  repository: trinitytechnology/linkifysoft-kas
+  repository: 637423378084.dkr.ecr.ap-southeast-1.amazonaws.com/linkifysoft/kas
   pullPolicy: IfNotPresent
-  tag: "1.19.4"
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
 
 imagePullSecrets: []
 nameOverride: ""
