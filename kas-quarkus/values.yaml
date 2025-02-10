@@ -54,25 +54,15 @@ config:
   linkify:
     connect:
       rest:
-        url: http://connect.linkify-dev.svc.cluster.local:8080
+        url: https://dev-connect.linkifysoft.com
 
 secret:
   create: true
   name: "kas"
-  # git:
-  #   repository: "https://np-gitea.linkifysoft.com/local/connect.git"
-  #   username: "local"
-  #   password: "Linkify@2024"
-  #   branch: "main"
-  # containerImage:
-  #   registry: "np-gitea.linkifysoft.com"
-  #   group: "local"
-  # #   registryUsername: "local"
-  #   registryPassword: "Linkify@2024"
   agent:
     token: "e07c6e8099004fbeb966723f821a7461"
   websocket:
-    url: "ws://host.docker.internal:8000/connection/websocket"
+    url: "wss://dev-ws.linkifysoft.com/connection/websocket"
 
 nodeSelector: {}
 
